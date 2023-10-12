@@ -17,6 +17,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>dev-rest-common</module>
+        <module>dev-rest-common-spring-boot-start</module>
+        <module>dev-rest-common-spring-boot-starter-autoconfigurer</module>
     </modules>
 
     <properties>
