@@ -8,6 +8,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,13 +16,19 @@ import org.springframework.stereotype.Component;
 public class LogAopService {
     private static final Logger log = LoggerFactory.getLogger(LogAopService.class);
 
-//    @Pointcut("execution(public * com.dev.rest.controller..*(..))")
+    @Autowired
+    private LogAopSwitchConfigProperties switchConfig;
+
+    //    @Pointcut("execution(public * com.dev.rest.controller..*(..))")
     @Pointcut("execution(* *..*Controller.*(..))")
     public void methodPointCut() {
     }
 
     @Around("methodPointCut()")
     public Object logStatics(ProceedingJoinPoint pjp) throws Throwable {
+        if (!this.switchConfig.getEnabled()) {
+            return pjp.proceed();
+        }
         Signature signature = pjp.getSignature();
         String className = pjp.getTarget().getClass().getName();
         String methodName = signature.getName();
