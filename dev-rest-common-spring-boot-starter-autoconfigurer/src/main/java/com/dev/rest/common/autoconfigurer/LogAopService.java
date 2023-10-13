@@ -20,7 +20,8 @@ public class LogAopService {
     private LogAopSwitchConfigProperties switchConfig;
 
     //    @Pointcut("execution(public * com.dev.rest.controller..*(..))")
-    @Pointcut("execution(* *..*Controller.*(..))")
+//    @Pointcut("execution(* *..*Controller.*(..))")
+    @Pointcut("within(@org.springframework.web.bind.annotation.RestController *) || within(@org.springframework.stereotype.Controller *)")
     public void methodPointCut() {
     }
 
