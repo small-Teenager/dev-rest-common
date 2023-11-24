@@ -4,7 +4,7 @@ public abstract class AbstractException extends RuntimeException {
 
     protected final String code;
 
-    public AbstractException(String code, String message) {
+    protected AbstractException(String code, String message) {
         super(message);
         this.code = code;
     }

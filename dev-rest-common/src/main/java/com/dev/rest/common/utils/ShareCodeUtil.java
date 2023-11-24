@@ -34,6 +34,8 @@ public class ShareCodeUtil {
      */
     private static final int CODE_LEN = 6;
 
+    private static Random random = new Random();
+
     /**
      * ID转换为邀请码
      *
@@ -60,7 +62,6 @@ public class ShareCodeUtil {
         if (len < CODE_LEN) {
             StringBuilder sb = new StringBuilder();
             sb.append(SUFFIX_CHAR);
-            Random random = new Random();
             // 去除SUFFIX_CHAR本身占位之后需要补齐的位数
             for (int i = 0; i < CODE_LEN - len - 1; i++) {
                 sb.append(BASE[random.nextInt(BIN_LEN)]);

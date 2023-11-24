@@ -18,7 +18,7 @@ public class MobileValidator implements ConstraintValidator<IsMobile, String> {
 
     public boolean isValid(String value, ConstraintValidatorContext constraintValidatorContext) {
         try {
-            if (StringUtils.isEmpty(value)) {
+            if (StringUtils.hasText(value)) {
                 return true;
             } else {
                 String regex = "[1]\\d{10}";
