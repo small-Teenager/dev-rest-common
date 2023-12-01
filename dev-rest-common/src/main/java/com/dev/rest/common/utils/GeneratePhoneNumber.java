@@ -1,6 +1,6 @@
 package com.dev.rest.common.utils;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class GeneratePhoneNumber {
     public static void main(String[] args) {
@@ -9,7 +9,7 @@ public class GeneratePhoneNumber {
     }
 
     public static String generatePhoneNumber() {
-        Random random = new Random();
+        ThreadLocalRandom random = ThreadLocalRandom.current();
         StringBuilder sb = new StringBuilder();
         // 手机号的前三位
         sb.append("1");

@@ -1,6 +1,6 @@
 package com.dev.rest.common.utils;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * 邀请码生成器，基本原理：<br/>
@@ -34,7 +34,7 @@ public class ShareCodeUtil {
      */
     private static final int CODE_LEN = 6;
 
-    private static Random random = new Random();
+    private static ThreadLocalRandom random = ThreadLocalRandom.current();
 
     /**
      * ID转换为邀请码
