@@ -16,6 +16,8 @@ import javax.crypto.spec.SecretKeySpec;
  * 3.实现aes解密的功能
  */
 public class AesUtil {
+    private AesUtil() {
+    }
 
     private static final Logger logger = LoggerFactory.getLogger(AesUtil.class);
     /**

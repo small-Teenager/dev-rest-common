@@ -1,6 +1,5 @@
 package com.dev.rest.common.autoconfigurer;
 
-import com.alibaba.fastjson.JSON;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
@@ -10,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
 
 @Component
 @Aspect
@@ -33,15 +34,13 @@ public class LogAopService {
         Signature signature = pjp.getSignature();
         String className = pjp.getTarget().getClass().getName();
         String methodName = signature.getName();
-        Object[] requestParams = pjp.getArgs();
 
         long start = System.currentTimeMillis();
-        Object response = pjp.proceed();
         long end = System.currentTimeMillis();
 
-        log.info("class:{},method:{},request:{},response:{},总耗时:{}(毫秒)", className, methodName, JSON.toJSONString(requestParams), JSON.toJSONString(response), end - start);
+        log.info("class:{},method:{},request:{},总耗时:{}(毫秒)", className, methodName, Arrays.toString(pjp.getArgs()), end - start);
 
-        return response;
+        return pjp.proceed();
     }
 
 }

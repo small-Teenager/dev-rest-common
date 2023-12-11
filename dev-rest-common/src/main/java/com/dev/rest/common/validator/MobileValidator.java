@@ -10,10 +10,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MobileValidator implements ConstraintValidator<IsMobile, String> {
-    public MobileValidator() {
+    private MobileValidator() {
     }
 
+    @Override
     public void initialize(IsMobile isMobile) {
+        // Do nothing
     }
 
     public boolean isValid(String value, ConstraintValidatorContext constraintValidatorContext) {

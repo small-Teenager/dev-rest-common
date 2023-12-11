@@ -5,6 +5,10 @@ import org.apache.commons.lang3.StringUtils;
 
 public class SensitiveInfoUtil {
 
+    private SensitiveInfoUtil(){
+
+    }
+
     /**
      * [中文姓名] 只显示第一个汉字，其他隐藏为2个星号<例子：李**>
      */

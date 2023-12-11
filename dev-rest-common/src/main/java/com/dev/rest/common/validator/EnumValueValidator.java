@@ -20,7 +20,6 @@ public class EnumValueValidator implements ConstraintValidator<EnumValue, Object
     public void initialize(EnumValue constraintAnnotation) {
         ConstraintValidator.super.initialize(constraintAnnotation);
 
-//        strValues = LettuceSets.newHashSet(constraintAnnotation.strValues());
         strValues = new HashSet<>(Arrays.asList(constraintAnnotation.strValues()));
         intValues = Arrays.stream(constraintAnnotation.intValues()).boxed().collect(Collectors.toList());
         isRequire = constraintAnnotation.isRequire();
